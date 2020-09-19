@@ -1,0 +1,30 @@
+html,
+body,
+div[id^="___gatsby"],
+div[id^="gatsby-focus-wrapper"] {
+  height: 100%;
+}
+
+div[id^="gatsby-focus-wrapper"] > div[tabindex] {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+}
+
+.container > footer {
+  background: #e8f4f8;
+  padding: 40px;
+  text-align: center;
+}

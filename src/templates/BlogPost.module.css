@@ -1,0 +1,42 @@
+.content {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+}
+
+.content :global(.nteract-display-area-stdout),
+.content :global(.nteract-outputs > .cell_display > pre) {
+  display: none;
+}
+
+.content :global(.nteract-outputs > .cell_display > img) {
+  display: block;
+}
+
+.content :global(.input-container) {
+  margin-bottom: 20px;
+}
+
+.content :global(.input-container pre.input) {
+  border-radius: 10px !important;
+  padding: 1em !important;
+}
+
+.content :global(.input-container code) {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+}
+
+.content :global(.input-container code:empty) {
+  display: none;
+}
+
+@media only screen and (max-width: 940px) {
+  .content {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}

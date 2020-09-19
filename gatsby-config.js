@@ -40,7 +40,6 @@ module.exports = {
       options: {
         notebookProps: {
           displayOrder: ["image/png", "text/html", "text/plain"],
-          theme: "dark",
           showPrompt: false,
         },
       },

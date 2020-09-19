@@ -1,22 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import css from "./index.module.css"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+const IndexPage = () => {
+  const {
+    allJupyterNotebook: { nodes },
+  } = useStaticQuery(graphql`
+    query IndexQuery {
+      allJupyterNotebook {
+        nodes {
+          fields {
+            slug
+          }
+          json {
+            metadata {
+              title
+              author
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <div className={css["container"]}>
+      <SEO title="Home" />
+      <div className={css["content"]}>
+        <h1>Jupyter Notebook Posts</h1>
+        <p>All posts are generated automatically from Jupyter Notebooks.</p>
+        <div>
+          {nodes.map(node => (
+            <Link key={node.fields.slug} to={`/${node.fields.slug}/`}>
+              <h2>{node.json.metadata.title}</h2>
+            </Link>
+          ))}
+        </div>
+      </div>
+      <footer>
+        Created by{" "}
+        <a href="https://rafaelquintanilha.com">Rafael Quintanilha</a> —{" "}
+        <a href="https://github.com/rafaelquintanilha/jupyter-blog">Source</a>
+      </footer>
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+  )
+}
 
 export default IndexPage
